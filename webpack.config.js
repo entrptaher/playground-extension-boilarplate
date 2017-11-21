@@ -1,8 +1,6 @@
-require("babel-polyfill");
-
+var JavaScriptObfuscator = require("webpack-obfuscator");
 var webpack = require("webpack");
 var path = require("path");
-var JavaScriptObfuscator = require("webpack-obfuscator");
 
 var BUILD_DIR = path.resolve(__dirname, "build");
 var APP_DIR = path.resolve(__dirname, "app");
@@ -16,35 +14,29 @@ var config = {
 		path: BUILD_DIR,
 		filename: "[name].js"
 	},
-	// plugins: [
-	// 	new JavaScriptObfuscator({
-	// 		compact: true,
-	// 		controlFlowFlattening: true,
-	// 		controlFlowFlatteningThreshold: 1,
-	// 		deadCodeInjection: true,
-	// 		deadCodeInjectionThreshold: 1,
-	// 		debugProtection: true,
-	// 		debugProtectionInterval: true,
-	// 		disableConsoleOutput: true,
-	// 		log: false,
-	// 		mangle: false,
-	// 		renameGlobals: false,
-	// 		rotateStringArray: true,
-	// 		selfDefending: true,
-	// 		stringArray: true,
-	// 		stringArrayEncoding: "rc4",
-	// 		stringArrayThreshold: 1,
-	// 		unicodeEscapeSequence: false
-	// 	})
-	// ],
+	plugins: [
+		new webpack.ProvidePlugin({
+			regeneratorRuntime: "regenerator-runtime/runtime"
+		}),
+		new JavaScriptObfuscator({
+			mangle: true,
+			renameGlobals: true,
+			rotateStringArray: true,
+			stringArray: true,
+			stringArrayEncoding: "rc4",
+			unicodeEscapeSequence: true
+		})
+	],
 	module: {
-		loaders: [
+		rules: [
 			{
-				test: /\.jsx?/,
-				include: APP_DIR,
-				loader: "babel-loader",
-				query: {
-					presets: ["react", "es2015"]
+				test: /\.(js|jsx)$/,
+				exclude: /(node_modules|bower_components)/,
+				use: {
+					loader: "babel-loader",
+					options: {
+						presets: ["es2015", "stage-0", "react"]
+					}
 				}
 			}
 		]
