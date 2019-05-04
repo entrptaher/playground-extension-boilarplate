@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+// we start off by removing all other styles applied by the page itself
+#abc123 {
+  all: initial;
+
+  * {
+    all: unset;
+  }
+}
+
+#abc123 {
+  font-family: 'Indie Flower', cursive;
+}
