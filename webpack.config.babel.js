@@ -69,7 +69,7 @@ const config = {
     // removes all old build files
     new CleanWebpackPlugin(),
     // copies static files required for extension, ie: logo etc
-    new CopyPlugin([{ from: `${APP_DIR}/static/img`, to: "img" }], {
+    new CopyPlugin([{ from: `${APP_DIR}/static/img/logo.png`, to: "img/logo.png" }], {
       copyUnmodified: true
     }),
     // creates a manifest file on build folder
