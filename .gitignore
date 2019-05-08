@@ -1,5 +1,11 @@
 build
 
+# ignore useless fonts
+build/fonts/*.eot
+build/fonts/*.woff2
+build/fonts/*.svg
+build/fonts/*.ttf
+
 # Logs
 logs
 *.log

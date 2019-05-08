@@ -43,12 +43,12 @@ const config = {
           }
         }
       },
-      // {
-      //   test: /\.(jpg|png|svg|woff|woff2|eot|ttf)(\?.*$|$)$/,
-      //   use: {
-      //     loader: "url-loader"
-      //   }
-      // },
+      {
+        test: /\.(jpg|png)(\?.*$|$)$/,
+        use: {
+          loader: "url-loader"
+        }
+      },
       {
         test: /\.(svg|woff|woff2|eot|ttf)(\?.*$|$)$/,
         use: [{
