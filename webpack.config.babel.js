@@ -43,11 +43,22 @@ const config = {
           }
         }
       },
+      // {
+      //   test: /\.(jpg|png|svg|woff|woff2|eot|ttf)(\?.*$|$)$/,
+      //   use: {
+      //     loader: "url-loader"
+      //   }
+      // },
       {
-        test: /\.(jpg|png|svg|woff|woff2|eot|ttf)(\?.*$|$)$/,
-        use: {
-          loader: "url-loader"
-        }
+        test: /\.(svg|woff|woff2|eot|ttf)(\?.*$|$)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'fonts/',    // where the fonts will go
+            publicPath: 'fonts/'       // override the default path
+          }
+        }]
       },
       {
         test: /\.(css|scss)$/,
@@ -69,9 +80,12 @@ const config = {
     // removes all old build files
     new CleanWebpackPlugin(),
     // copies static files required for extension, ie: logo etc
-    new CopyPlugin([{ from: `${APP_DIR}/static/img/logo.png`, to: "img/logo.png" }], {
-      copyUnmodified: true
-    }),
+    new CopyPlugin(
+      [{ from: `${APP_DIR}/static/img/logo.png`, to: "img/logo.png" }],
+      {
+        copyUnmodified: true
+      }
+    ),
     // creates a manifest file on build folder
     new WebpackExtensionManifestPlugin({
       config: {

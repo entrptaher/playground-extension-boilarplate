@@ -1,12 +1,24 @@
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
-
-// we start off by removing all other styles applied by the page itself
 #abc123 {
+
+  // we start off by removing all other styles applied by the page itself
   all: initial;
 
   * {
     all: unset;
   }
+
+  // google web fonts
+  @import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+  // default browser styles
+  @import '~@entrptaher/default-css';
+
+  // font awesome setup to let it build
+  $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+
+  @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+  @import '~@fortawesome/fontawesome-free/scss/regular.scss';
+  @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 }
 
 #abc123 {

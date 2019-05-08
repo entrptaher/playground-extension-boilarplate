@@ -6,19 +6,30 @@ function createDiv(divId) {
   if (!document.getElementById(divId)) {
     const div = document.createElement("div");
     div.id = divId;
-    document.body.appendChild(div);
+    document.body.insertBefore(div, document.body.firstChild);
   }
 }
 
 // Start of the content script
 import React from "react";
 import ReactDOM, { render } from "react-dom";
+import "./fontawesome.jsx";
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <p> Hello React Project</p>
+        <ul>
+          <li>
+            <i className="fas fa-camera" /> Test 1
+          </li>
+          <li>
+            <i className="fas fa-camera-retro" /> Test 2
+          </li>
+          <li>
+            <i className="fas fa-check-square" /> Test 3
+          </li>
+        </ul>
       </div>
     );
   }
@@ -33,6 +44,9 @@ if (window._EXT_ICON_CLICKED > 1) {
   delete window._EXT_ICON_CLICKED;
   ReactDOM.unmountComponentAtNode(document.getElementById(randomId));
   document.getElementById(randomId).remove();
+
+  // hard reset current page
+  location.reload();
 } else {
   createDiv(randomId);
   ReactDOM.render(<App />, document.getElementById(randomId));

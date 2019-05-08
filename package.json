@@ -7,6 +7,9 @@
     "build": "webpack --mode=production"
   },
   "dependencies": {
+    "@entrptaher/default-css": "^1.0.1",
+    "@fortawesome/fontawesome-free": "^5.8.2",
+    "file-loader": "^3.0.1",
     "preact": "^8.4.2",
     "preact-compat": "^3.18.5",
     "react": "^16.8.6",
