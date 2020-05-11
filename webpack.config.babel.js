@@ -42,37 +42,6 @@ const config = {
             presets: ["@babel/preset-react"]
           }
         }
-      },
-      {
-        test: /\.(jpg|png)(\?.*$|$)$/,
-        use: {
-          loader: "url-loader"
-        }
-      },
-      {
-        test: /\.(svg|woff|woff2|eot|ttf)(\?.*$|$)$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'fonts/',    // where the fonts will go
-            publicPath: 'fonts/'       // override the default path
-          }
-        }]
-      },
-      {
-        test: /\.(css|scss)$/,
-        use: [
-          {
-            loader: "style-loader" // creates style nodes from JS strings
-          },
-          {
-            loader: "css-loader" // translates CSS into CommonJS
-          },
-          {
-            loader: "sass-loader" // compiles Sass to CSS
-          }
-        ]
       }
     ]
   },
