@@ -1,5 +1,5 @@
 export default {
-	"manifest_version": 2,
+	"manifest_version": 3,
 	"name": "Playground Extension",
 	"version": "1.0.0",
 	"short_name": "playground_extension",
@@ -8,30 +8,38 @@ export default {
 		"128": "img/logo.png"
 	},
 	"permissions": [
-		"<all_urls>",
 		"tabs",
 		"notifications",
 		"cookies",
 		"activeTab",
 		"storage",
+		"scripting"
+	],
+	"host_permissions": [
+		"<all_urls>",
 		"http://fonts.googleapis.com/",
-    "https://fonts.googleapis.com/"
+		"https://fonts.googleapis.com/"
 	],
 	"background": {
-		"scripts": [
-			"js/background.js"
-		],
-		"persistent": false
+		"service_worker": "js/background.js",
+		"type": "module"
 	},
 	"web_accessible_resources": [
-		"*.png",
-		"*.ttf",
-		"*.eot",
-		"*.woff",
-		"*.woff2",
-		"*.svg"
+		{
+			"resources": [
+				"*.png",
+				"*.ttf",
+				"*.eot",
+				"*.woff",
+				"*.woff2",
+				"*.svg"
+			],
+			"matches": [
+				"*://*/*"
+			]
+		}
 	],
-	"browser_action": {
+	"action": {
 		"default_icon": "img/logo.png"
 	},
 	"offline_enabled": true
